@@ -28,17 +28,20 @@ public class Main {
         int number = 0;
         int symbols = 0;
 
-        for (int i = 0; i < text.length(); i++) {
-            char ch = text.charAt(i);
-
-            if (Character.isUpperCase(ch)) {
-                uppercase++;
-            } else if (Character.isLowerCase(ch)) {
-                lowercase++;
-            } else if (Character.isDigit(ch)) {
-                number++;
-            } else {
-                symbols++;
+        for (char ch : text.toCharArray()) {
+            switch (Character.getType(ch)) {
+                case Character.UPPERCASE_LETTER:
+                    uppercase++;
+                    break;
+                case Character.LOWERCASE_LETTER:
+                    lowercase++;
+                    break;
+                case Character.DECIMAL_DIGIT_NUMBER:
+                    number++;
+                    break;
+                default:
+                    symbols++;
+                    break;
             }
         }
 

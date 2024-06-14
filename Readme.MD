@@ -42,24 +42,26 @@ Method di atas akan menghitung berapa kali `k` habis dibagi `b`
 ### 3. `countUppercaseLowercaseNumberSymbols(String str)`
 
 ```java
-// countUppercaseLowercaseNumberSymbols method
 public static void countUppercaseLowercaseNumberSymbols(String text) {
     int uppercase = 0;
     int lowercase = 0;
     int number = 0;
     int symbols = 0;
 
-    for (int i = 0; i < text.length(); i++) {
-        char ch = text.charAt(i);
-
-        if (Character.isUpperCase(ch)) {
-            uppercase++;
-        } else if (Character.isLowerCase(ch)) {
-            lowercase++;
-        } else if (Character.isDigit(ch)) {
-            number++;
-        } else {
-            symbols++;
+    for (char ch : text.toCharArray()) {
+        switch (Character.getType(ch)) {
+            case Character.UPPERCASE_LETTER:
+                uppercase++;
+                break;
+            case Character.LOWERCASE_LETTER:
+                lowercase++;
+                break;
+            case Character.DECIMAL_DIGIT_NUMBER:
+                number++;
+                break;
+            default:
+                symbols++;
+                break;
         }
     }
 
@@ -72,11 +74,11 @@ public static void countUppercaseLowercaseNumberSymbols(String text) {
 Method di atas akan menghitung jumlah huruf besar, huruf kecil, angka, dan simbol dalam sebuah string.
 - Method ini akan menginisialisasi variabel `uppercase`, `lowercase`, `number`, dan `symbols` dengan 0.
 - Method ini akan melakukan perulangan sebanyak panjang dari string `text`.
-- Method ini akan mengambil karakter pada index ke `i` dari string `text`.
-- Jika karakter tersebut merupakan huruf besar, maka variabel `uppercase` akan bertambah 1.
-- Jika karakter tersebut merupakan huruf kecil, maka variabel `lowercase` akan bertambah 1.
-- Jika karakter tersebut merupakan angka, maka variabel `number` akan bertambah 1.
-- Jika karakter tersebut merupakan simbol, maka variabel `symbols` akan bertambah 1.
+- Method ini akan mengecek tipe dari karakter tersebut menggunakan `Character.getType(ch)`.
+- Jika karakter tersebut adalah huruf besar, maka variabel `uppercase` akan bertambah 1.
+- Jika karakter tersebut adalah huruf kecil, maka variabel `lowercase` akan bertambah 1.
+- Jika karakter tersebut adalah angka, maka variabel `number` akan bertambah 1.
+- Jika karakter tersebut tidak termasuk dalam tiga kategori di atas, maka variabel `symbols` akan bertambah 1.
 - Jika method ini dipanggi; `countUppercaseLowercaseNumberSymbols("pemrogramanDasarJava1")` maka outputnya adalah:
 ```
 Uppercase: 3
