@@ -81,7 +81,7 @@ Method di atas akan menghitung jumlah huruf besar, huruf kecil, angka, dan simbo
 - Jika karakter tersebut tidak termasuk dalam tiga kategori di atas, maka variabel `symbols` akan bertambah 1.
 - Jika method ini dipanggi; `countUppercaseLowercaseNumberSymbols("pemrogramanDasarJava1")` maka outputnya adalah:
 ```
-Uppercase: 3
+Uppercase: 2
 Lowercase: 18
 Number: 1
 Symbols: 0
